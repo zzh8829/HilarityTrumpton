@@ -6,6 +6,14 @@ pip3 install -r requirements.txt
 python3 trans2.py
 ```
 
+## Build client
+
+```
+cd client
+yarn install
+yarn build
+```
+
 ## Fix Audio
 ```
 ffmpeg -i trumpc.mp4 -ar 16000 -ac 1 trump.wav

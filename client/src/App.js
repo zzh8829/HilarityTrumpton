@@ -14,6 +14,7 @@ soundManager.setup({
   useHTML5Audio: false,
   flashVersion: 9
 })
+const API_URL = "https://hilaritytrumpton.cloud.zihao.me"
 class App extends Component {
   constructor(props){
     super(props);
@@ -30,7 +31,7 @@ class App extends Component {
     var lastCheck = (new Date().getTime());
     var instance = this;
     return soundManager.createSound(Object.assign({
-      url: "/generate/audio?person="+person+"&text="+encodeURIComponent(text),
+      url: API_URL + "/generate/audio?person="+person+"&text="+encodeURIComponent(text),
       autoPlay: true,
       volume: 100,
       usePeakData: true,
@@ -70,7 +71,7 @@ class App extends Component {
       instance.setState({loading: true});
       person = (person + 1) % 3;
       var name = ["hillary", "trump", "obama"][person];
-      request.get("/generate/phrase?person="+name).end(function(err, res){
+      request.get(API_URL + "/generate/phrase?person="+name).end(function(err, res){
         var text = res.text;
         instance.playText(name, text, {
           onplay: function(){
